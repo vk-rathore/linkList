@@ -1,0 +1,32 @@
+
+.addListInput{
+
+    box-shadow: 0 0 0 0 #fff inset, #1de9b6 0 0 0 2px;
+    border: 0;
+    background: transparent;
+    appearance: none;
+    position: relative;
+    border-radius: 3px;
+    padding: 9px 12px;
+    line-height: 1.4;
+    color: #1de9b6;
+    font-size: 16px;
+    font-weight: 400;
+    height: 32px;
+    transition: all .2s ease;
+    outline: 0;
+    margin: 5px;
+  
+  }
+
+  .btn{
+    border: 0px;
+    outline: 0;
+    cursor: pointer;
+    width: 222px;
+    height: 37px;
+    background: #1de9b6;
+    color: white;
+    margin: 5px;
+    border-radius: 5px;
+  }

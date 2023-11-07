@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import AddLinklist from "./Components/addLinklist";
+import LinkList from "./Components/linkList";
 
 function App() {
+  const [linkList, SetLinkList] = useState([
+    { value: "1", address: "$123", self: "$123" },
+    { value: "2", address: "null", self: "$124" },
+  ]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <div className="col-4">
+          <AddLinklist />
+        </div>
+        <div className="col-8 ">
+          LinkList
+          <div className="lList">
+            {linkList.map((node) => (
+              <LinkList node={node} />
+            ))}
+          </div>
+          {linkList?.length > 0 && (
+            <div className="nullList">
+              <div className="null">null</div>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
