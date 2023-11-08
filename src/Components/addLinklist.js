@@ -1,16 +1,39 @@
-import React from 'react'
-import "./AddLinklist.css"
+import React, { useState } from "react";
+import "./AddLinklist.css";
 
-export default function addLinklist() {
+export default function AddLinklist({ addList }) {
+  const [value, SetValue] = useState("");
+  const [address, Setaddress] = useState("");
+  const onSubmit =()=>{
+    if(value===""){
+        alert("value should not be empty")
+    }else{
+        addList(value,address);
+        SetValue("");
+        Setaddress("");
+    }
+  }
   return (
-    <div className='AddLinkList'>
+    <div className="AddLinkList">
       Add Linklist
-      <div>
-        <input type="text" className='addListInput' placeholder='Enter value' />
-        <input type="text" className='addListInput' placeholder='Enter address' />
+      <div className="form">
+        <input
+          type="text"
+          className="addListInput"
+          value={value}
+          onChange={(e) => SetValue(e.target.value)}
+          placeholder="Enter value"
+        />
+        <label className="addlabel">address should be number or null</label>
+        <input
+          type="text"
+          className="addListInput"
+          value={address}
+          onChange={(e) => Setaddress(e.target.value)}
+          placeholder="Enter address"
+        />
       </div>
-      <button className='btn'>Add LinkList</button>
-      
+      <button className="btn" onClick={onSubmit}>Add LinkList</button>
     </div>
-  )
+  );
 }

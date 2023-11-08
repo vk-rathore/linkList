@@ -1,16 +1,32 @@
 .add{
     width: 120px;
+    display: flex;
+    align-items: center;
 }
 .add p{
     font-size: 15px;
     color: #1de9b6;
     position: relative;
     top: 61px;
-    right: -85px;
+    right: -229px;
+}
+.add button{
+    border: 0px;
+    outline: 0;
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+    background: #1de9b6;
+    color: white;
+    margin: 5px;
+    border-radius: 5px;
+    position: relative;
+    top: 61px;
+    right: -230px;
 }
 .Node{
-    width: 120px;
-    height: 100px;
+    width: 213px;
+    height: 104px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,7 +46,7 @@
 }
 
 .arrow{
-    width: 120px;
+    width: 220px;
 }
 .aro{
     font-size: 35px;
