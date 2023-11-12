@@ -102,19 +102,48 @@ function App() {
 
   const handleDragAndDrop = (results) => {
     console.log("dra and drop ", results);
-    // const { source, destination, type } = results;
+    const { source, destination, type } = results;
 
-    // if (!destination) return;
+    if (!destination) return;
 
-    // if (
-    //   source.droppableId === destination.droppableId &&
-    //   source.index === destination.index
-    // )
-    //   return;
+    if (
+      source.droppableId === destination.droppableId &&
+      source.index === destination.index
+    )
+      return;
 
-    // if (type === "group") {
+    if (type === "group") {
+      const reorderedStores = [...linkList];
 
-    // }
+      const storeSourceIndex = source.index;
+      const storeDestinatonIndex = destination.index;
+      const [removedStore] = reorderedStores.splice(storeSourceIndex, 1);
+      // remove prev eliment , change address of prev eliment with eliment of next address
+      if (storeSourceIndex - 1 >= 0) {
+        const [prevEliment] = reorderedStores.splice(storeSourceIndex - 1, 1);
+        prevEliment["address"] = removedStore.address;
+        reorderedStores.splice(storeSourceIndex - 1, 0, prevEliment);
+      }
+      //at destination update address with next address
+      if (storeDestinatonIndex === reorderedStores.length) {
+        removedStore["address"] = "null";
+      } else {
+        removedStore["address"] = reorderedStores[storeDestinatonIndex].self;
+      }
+
+      reorderedStores.splice(storeDestinatonIndex, 0, removedStore);
+      if (storeDestinatonIndex > 0) {
+        //update prev address with current node
+        const [destiPrevElement] = reorderedStores.splice(
+          storeDestinatonIndex - 1,
+          1
+        );
+        destiPrevElement["address"] = removedStore.self;
+        reorderedStores.splice(storeDestinatonIndex - 1, 0, destiPrevElement);
+      }
+
+      return SetLinkList(reorderedStores);
+    }
   };
 
   return (
